@@ -19,7 +19,7 @@ exports.login = function(username, password, securityToken, clientId, clientSecr
 };
 
 exports.query = function(instanceUrl, accessToken, queryString) {
-	var url = instanceUrl + "/services/data" + API_VERSION + "/query";
+	var url = instanceUrl + "/services/data/" + API_VERSION + "/query";
 	var data = {q: queryString};
 	
 	var request = {

@@ -17,6 +17,15 @@ SET ETaggingEnabled             true
 SET CORS https://system.fatfractal.com
 
 #
+# Private Settings
+#
+SET_PRIVATE SalesForce.username <username>
+SET_PRIVATE SalesForce.password <password>
+SET_PRIVATE SalesForce.securityToken <token>
+SET_PRIVATE SalesForce.clientID <id>
+SET_PRIVATE SalesForce.clientSecret <secret>
+
+#
 # Object Types
 #
 CREATE OBJECTTYPE FFUser (userName STRING, firstName STRING, lastName STRING, email STRING, active BOOLEAN, authDomain STRING, scriptAuthService STRING, groups GRABBAG /FFUserGroup, notif_ids GRABBAG /FFNotificationID)
@@ -30,6 +39,11 @@ CREATE OBJECTTYPE FFNotificationID (idType STRING, idValue STRING)
 CREATE COLLECTION /FFUser OBJECTTYPE FFUser
 CREATE COLLECTION /FFUserGroup OBJECTTYPE FFUserGroup
 CREATE COLLECTION /FFNotificationID OBJECTTYPE FFNotificationID
+
+#
+# Virtual Collection Resources
+#
+CREATE VIRTUAL_COLLECTION /Person AS javascript:require('scripts/SampleCollection.js')
 
 #
 # Event Handlers
